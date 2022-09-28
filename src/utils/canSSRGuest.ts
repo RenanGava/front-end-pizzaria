@@ -13,7 +13,7 @@ export function canSSRGuest<P>(fn:GetServerSideProps<P>){
             return {
                 redirect:{
                     destination: "/dashboard",
-                    // esse paramentro é oara dizer que nào é sempre que vai acontercer
+                    // esse paramentro é para dizer que nào é sempre que vai acontercer
                     permanent: false 
                 }
             }
