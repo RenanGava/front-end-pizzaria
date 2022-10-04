@@ -1,0 +1,77 @@
+.container {
+    max-width: 1120px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container h1 {
+    color: var(--white);
+}
+
+.containerHeader {
+    display: flex;
+    flex-direction: row;
+
+    button {
+        background: transparent;
+        border: 0;
+
+        margin-left: 1rem;
+    }
+}
+
+.listOrders {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.orderItem {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--dark-900);
+    margin-bottom: 1rem;
+    align-items: center;
+    border-radius: 0.3rem;
+
+    button {
+        border: 0;
+        background: transparent;
+        font-size: 1.2rem;
+        color: var(--white);
+        height: 60px;
+        align-items: center;
+        position: relative;
+
+        span {
+            margin-left: 1.5rem;
+        }
+
+        // tanto o ::after quanto o ::before irão funcionar nesse caso.
+        span::after {
+            content: "";
+            color: var(--dark-700);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 9px;
+            background-color: var(--green-900);
+            height: 60px;
+            border-radius: 0.3rem  0 0 0.3rem;
+        }
+    }
+}
+
+// podemos fazer o tracinho verde da lista no dashboard do jeito abaixo também
+// para isso temos que criar uma div e estilizar ela.
+// .tag{
+//     width: 9px;
+//     background-color: var(--green-900);
+//     height: 60px;
+//     margin-right: 1rem;
+//     border-radius: 0 0.3rem 0.3rem 0;
+// }

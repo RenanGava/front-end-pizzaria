@@ -23,7 +23,6 @@ export default function Product({ categoryList }: CategoryProps) {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
-    const [] = useState()
 
     const [avatarUrl, setAvatarUrl] = useState('')
     const [imageAvatar, setImageAvatar] = useState(null)
@@ -105,6 +104,11 @@ export default function Product({ categoryList }: CategoryProps) {
             console.log(err);
             toast.error("Ocorreu algum Erro ao Cadastrar!! 😢")
         }
+        setName('')
+        setPrice('')
+        setDescription('')
+        setImageAvatar(null)
+        setAvatarUrl('')
 
     }
 
