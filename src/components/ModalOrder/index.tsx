@@ -8,9 +8,10 @@ interface ModalOrderProps{
     isOpen: boolean;
     onRequestClose: () => void;
     order: OrderItemProps[]
+    handleFinishOrder: (id: string) => void
 }
 
-export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
+export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }: ModalOrderProps) {
 
     console.log(order);
     
@@ -53,11 +54,18 @@ export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
                             key={item.id}
                             className={style.containerItem}
                         >
-                            <span> {item.amount} - {item.product.name}</span>
+                            <span> {item.amount} - <strong>{item.product.name}</strong></span>
                             <span className={style.description}>{item.product.description}</span>
                         </section>
                     );
                 })}
+
+                <button 
+                    className={style.buttonOrder}
+                    onClick={ () =>{ handleFinishOrder(order[0].order_id) } }
+                >
+                    Concluir Pedido
+                </button>
             </div>
         </Modal>
     )

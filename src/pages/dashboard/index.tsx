@@ -67,6 +67,25 @@ export default function Dashboard({ orders }: HomeProps) {
         setModalIsVisible(true)
     }
 
+    async function handleFinishItem(id: string) {
+        const apiClient = setupAPIClient()
+
+        await apiClient.put('/order/finish', {
+            order_id: id
+        })
+
+        const response = await apiClient.get('/order')
+        setOrderList(response.data)
+
+        setModalIsVisible(false)
+    }
+
+    async function  handleRefreshOrders() {
+        const apiClient = setupAPIClient()
+        const response = await apiClient.get('/order')
+        setOrderList(response.data)
+    }
+
 
     return (
         <>
@@ -80,12 +99,19 @@ export default function Dashboard({ orders }: HomeProps) {
                     <div className={styles.containerHeader}>
                         <h1>Últimos Pedidos</h1>
 
-                        <button>
+                        <button onClick={handleRefreshOrders}>
                             <FiRefreshCcw size={25} color="#3fffa3" />
                         </button>
                     </div>
 
                     <article className={styles.listOrders}>
+
+                        {orderList.length === 0 && (
+                            <span className={styles.emptyList}>
+                                Nenhum Pedido Encontrado...
+                            </span>
+                        )}
+
                         {
                             orderList.map((item) => {
                                 return (
@@ -100,11 +126,12 @@ export default function Dashboard({ orders }: HomeProps) {
                     </article>
                 </main>
 
-                { modalIsVisible && (
+                {modalIsVisible && (
                     <ModalOrder
                         isOpen={modalIsVisible}
                         onRequestClose={handleCloseModal}
                         order={modalItem}
+                        handleFinishOrder={handleFinishItem}
                     />
                 )}
             </div>

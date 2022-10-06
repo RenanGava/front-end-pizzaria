@@ -30,6 +30,12 @@
     margin: 1rem 0;
 }
 
+.emptyList {
+    color: var(--gray-100);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 .orderItem {
     display: flex;
     flex-direction: row;
@@ -61,7 +67,7 @@
             width: 9px;
             background-color: var(--green-900);
             height: 60px;
-            border-radius: 0.3rem  0 0 0.3rem;
+            border-radius: 0.3rem 0 0 0.3rem;
         }
     }
 }
